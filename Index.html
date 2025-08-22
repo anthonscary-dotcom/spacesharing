@@ -76,116 +76,65 @@
       border-bottom-left-radius: 15px;
     }
 
-    /* UPDATED NAVIGATION BUTTONS TO MATCH SPACE SECTION */
+    .nav-bar a,
+    .nav-bar button {
+      background: transparent;
+      border: 2px solid var(--axiom-green-light);
+      color: var(--text-light);
+      font-weight: 600;
+      font-size: 0.85em;
+      cursor: pointer;
+      text-transform: uppercase;
+      padding: 0.5em 1em;
+      transition: all 0.3s ease;
+      border-radius: 30px;
+      letter-spacing: 1px;
+    }
 
-/* Header Styles */
-header {
-  background:  
-              url("spacesharingheader.jpg") no-repeat center/cover;
-  height: 100vh;
-  min-height: 600px;
-  text-align: center;
-  padding-top: 3em;
-  position: relative;
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+    .nav-bar a:hover,
+    .nav-bar button:hover {
+      color: var(--axiom-green);
+      background: var(--text-light);
+      border-color: var(--text-light);
+    }
 
-header img {
-  max-width: 120px;
-  margin: 0 auto;
-  filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
-}
+    .dropdown {
+      position: relative;
+    }
 
-header h1 {
-  font-size: 3.5em;
-  margin: 0.5em 0 0.2em;
-  color: var(--text-light);
-  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-}
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 2.8em;
+      right: 0;
+      background-color: var(--bg-darker);
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      z-index: 10;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--axiom-green);
+    }
 
-header p {
-  font-size: 1.5em;
-  font-style: italic;
-  color: var(--axiom-green-light);
-  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-}
+    .dropdown-content a {
+      color: var(--text-light);
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      font-size: 0.85em;
+      transition: all 0.3s;
+    }
 
-.nav-bar {
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: flex;
-  gap: 1.2em;
-  align-items: center;
-  padding: 1em 2em;
-  /* REMOVED THE GREEN BACKGROUND */
-  backdrop-filter: blur(5px);
-  border-bottom-left-radius: 15px;
-}
+    .dropdown-content a:hover {
+      background-color: var(--axiom-green);
+      padding-left: 20px;
+    }
 
-/* UPDATED NAVIGATION BUTTONS TO MATCH SPACE SECTION */
-.nav-bar a,
-.nav-bar button {
-  background-color: var(--axiom-green);
-  color: var(--text-light);
-  font-weight: 500;
-  font-size: 0.9em;
-  cursor: pointer;
-  text-transform: uppercase;
-  padding: 0.6em 1.2em;
-  transition: all 0.3s ease;
-  border-radius: 30px;
-  letter-spacing: 1px;
-  border: 2px solid var(--axiom-green);
-  text-decoration: none;
-}
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
 
-.nav-bar a:hover,
-.nav-bar button:hover {
-  background-color: transparent;
-  color: var(--axiom-green-light);
-  border-color: var(--axiom-green-light);
-}
-
-.dropdown {
-  position: relative;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  top: 2.8em;
-  right: 0;
-  background-color: var(--bg-darker);
-  min-width: 180px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-  z-index: 10;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid var(--axiom-green);
-}
-
-.dropdown-content a {
-  color: var(--text-light);
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  font-size: 0.85em;
-  transition: all 0.3s;
-}
-
-.dropdown-content a:hover {
-  background-color: var(--axiom-green);
-  padding-left: 20px;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
- /* About Section */
+    /* About Section */
     .about-section {
       display: flex;
       flex-wrap: wrap;
@@ -274,6 +223,64 @@ header p {
       background: linear-gradient(135deg, rgba(19,78,31,0.3) 0%, rgba(19,78,31,0.1) 100%);
     }
 
+    /* Why Choose Us Section */
+    .why-choose-us {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                  url('aboutusbk.png') no-repeat center center/cover;
+      padding: 80px 20px;
+      margin: 60px 0;
+      text-align: center;
+    }
+
+    .why-choose-us h2 {
+      font-size: 2.8em;
+      color: var(--text-light);
+      margin-bottom: 50px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .why-choose-us h2:after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--axiom-green);
+    }
+
+    .benefits-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .benefit-item {
+      background: rgba(30, 30, 30, 0.7);
+      padding: 30px;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .benefit-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .benefit-item h3 {
+      color: var(--axiom-green-light);
+      font-size: 1.5em;
+      margin-bottom: 15px;
+    }
+
+    .benefit-item p {
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
     @media (max-width: 768px) {
       .about-section {
         flex-direction: column;
@@ -292,6 +299,10 @@ header p {
       
       .text-column:first-child::after {
         display: none;
+      }
+      
+      .benefits-container {
+        grid-template-columns: 1fr;
       }
     }
     /* Space Tiles */
@@ -451,7 +462,7 @@ header p {
     /* Footer Styles */
     footer {
       position: relative;
-      background: 
+      background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
                   url('depsit.jpg') no-repeat center center/cover;
       color: white;
       clip-path: polygon(0 8%, 50% 0, 100% 8%, 100% 100%, 0% 100%);
@@ -623,6 +634,32 @@ header p {
   </div>
 </section>
 
+<!-- Why Choose Us Section -->
+<section class="why-choose-us">
+  <h2>WHY CHOOSE US?</h2>
+  <div class="benefits-container">
+    <div class="benefit-item">
+      <h3>Focused Environment</h3>
+      <p>Distraction-free environments for both focused work and creative thinking</p>
+    </div>
+    <div class="benefit-item">
+      <h3>Flexible Plans</h3>
+      <p>Save on long-term leases with flexible, scalable plans</p>
+    </div>
+    <div class="benefit-item">
+      <h3>Professional Hospitality</h3>
+      <p>Impress clients and stakeholders with high-touch, professional hospitality</p>
+    </div>
+    <div class="benefit-item">
+      <h3>Inspiring Design</h3>
+      <p>Enjoy modern design, natural light, greenery, and calming ambiance</p>
+    </div>
+    <div class="benefit-item">
+      <h3>Prime Location</h3>
+      <p>Centrally located with easy parking and transit access</p>
+    </div>
+  </div>
+</section>
 
 <section id="spaces">
   <h2 class="section-title">Our Spaces</h2>
