@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SpaceSharing - Axiom</title>
+  <link rel="icon" href="logo-light.png" type="image/png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <style>
+    /* Base Styles */
+    :root {
+      --axiom-green: #134e1f;
+      --axiom-green-light: #1a6a2c;
+      --axiom-gold: #d4af37;
+      --text-light: #f0f0f0;
+      --text-dark: #222;
+      --bg-dark: #121212;
+      --bg-darker: #0a0a0a;
+      --card-bg: rgba(30, 30, 30, 0.8);
+    }
+    
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', 'Roboto', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* Header Styles */
+    header {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                  url("spacesharingheader.jpg") no-repeat center/cover;
+      height: 100vh;
+      min-height: 600px;
+      text-align: center;
+      padding-top: 3em;
+      position: relative;
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    header img {
+      max-width: 120px;
+      margin: 0 auto;
+      filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+    }
+
+    header h1 {
+      font-size: 3.5em;
+      margin: 0.5em 0 0.2em;
+      color: var(--text-light);
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    }
+
+    header p {
+      font-size: 1.5em;
+      font-style: italic;
+      color: var(--axiom-green-light);
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+
+    .nav-bar {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      gap: 1.2em;
+      align-items: center;
+      padding: 1em 2em;
+      background: rgba(19, 78, 31, 0.8);
+      backdrop-filter: blur(5px);
+      border-bottom-left-radius: 15px;
+    }
+
+    /* UPDATED NAVIGATION BUTTONS TO MATCH SPACE SECTION */
+
+/* Header Styles */
+header {
+  background:  
+              url("spacesharingheader.jpg") no-repeat center/cover;
+  height: 100vh;
+  min-height: 600px;
+  text-align: center;
+  padding-top: 3em;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+header img {
+  max-width: 120px;
+  margin: 0 auto;
+  filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+}
+
+header h1 {
+  font-size: 3.5em;
+  margin: 0.5em 0 0.2em;
+  color: var(--text-light);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+
+header p {
+  font-size: 1.5em;
+  font-style: italic;
+  color: var(--axiom-green-light);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.nav-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  gap: 1.2em;
+  align-items: center;
+  padding: 1em 2em;
+  /* REMOVED THE GREEN BACKGROUND */
+  backdrop-filter: blur(5px);
+  border-bottom-left-radius: 15px;
+}
+
+/* UPDATED NAVIGATION BUTTONS TO MATCH SPACE SECTION */
+.nav-bar a,
+.nav-bar button {
+  background-color: var(--axiom-green);
+  color: var(--text-light);
+  font-weight: 500;
+  font-size: 0.9em;
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: 0.6em 1.2em;
+  transition: all 0.3s ease;
+  border-radius: 30px;
+  letter-spacing: 1px;
+  border: 2px solid var(--axiom-green);
+  text-decoration: none;
+}
+
+.nav-bar a:hover,
+.nav-bar button:hover {
+  background-color: transparent;
+  color: var(--axiom-green-light);
+  border-color: var(--axiom-green-light);
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 2.8em;
+  right: 0;
+  background-color: var(--bg-darker);
+  min-width: 180px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  z-index: 10;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--axiom-green);
+}
+
+.dropdown-content a {
+  color: var(--text-light);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 0.85em;
+  transition: all 0.3s;
+}
+
+.dropdown-content a:hover {
+  background-color: var(--axiom-green);
+  padding-left: 20px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+ /* About Section */
+    .about-section {
+      display: flex;
+      flex-wrap: wrap;
+      background: rgba(30, 30, 30, 0.8);
+      border-radius: 15px;
+      margin: 3em auto;
+      max-width: 1200px;
+      overflow: hidden;
+      border: 1px solid rgba(19, 78, 31, 0.3);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .text-tile {
+      flex: 1 1 350px;
+      min-width: 300px;
+      padding: 3em;
+      display: flex; /* Make text-tile a flex container */
+      position: relative;
+    }
+
+    .text-column {
+      flex: 1;
+      padding: 0 1.5em;
+      position: relative;
+    }
+
+    .text-column:first-child {
+      border-right: 1px solid rgba(255,255,255,0.1); /* Subtle static divider */
+    }
+
+    .text-column:first-child::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 10%;
+      height: 0;
+      width: 2px;
+      background: white;
+      transition: height 0.5s ease-out;
+    }
+
+    .text-tile:hover .text-column:first-child::after {
+      height: 80%;
+    }
+
+    .text-tile h3 {
+      color: #1a6a2c;
+      margin-bottom: 1em;
+      font-size: 2em;
+      position: relative;
+      display: inline-block;
+    }
+
+    .text-tile h3:after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: #134e1f;
+    }
+
+    .text-tile p {
+      font-size: 1.1em;
+      color: #f0f0f0;
+      line-height: 1.8;
+      margin-bottom: 1.5em;
+    }
+
+    .image-tile {
+      flex: 1 1 350px;
+      min-width: 300px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .image-tile:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(19,78,31,0.3) 0%, rgba(19,78,31,0.1) 100%);
+    }
+
+    @media (max-width: 768px) {
+      .about-section {
+        flex-direction: column;
+      }
+      
+      .text-tile {
+        flex-direction: column;
+      }
+      
+      .text-column:first-child {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding-bottom: 2em;
+        margin-bottom: 2em;
+      }
+      
+      .text-column:first-child::after {
+        display: none;
+      }
+    }
+    /* Space Tiles */
+    .section-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      color: var(--axiom-green-light);
+      font-size: 2.5em;
+      margin: 1.5em 0;
+      position: relative;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--axiom-green);
+    }
+
+    .space-tile {
+      display: flex;
+      margin-bottom: 60px;
+      align-items: center;
+      gap: 40px;
+      background: var(--card-bg);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      overflow: hidden;
+      border: 1px solid rgba(19, 78, 31, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .space-tile:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    }
+
+    .image-right {
+      flex-direction: row;
+    }
+
+    .image-left {
+      flex-direction: row-reverse;
+    }
+
+    .tile-content {
+      flex: 1;
+      padding: 40px;
+    }
+
+    .space-tile h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: var(--axiom-green-light);
+      font-weight: 600;
+    }
+
+    .space-tile p {
+      font-size: 1.1em;
+      line-height: 1.8;
+      color: var(--text-light);
+      margin-bottom: 25px;
+    }
+
+    .space-tile ul {
+      padding-left: 20px;
+      color: var(--text-light);
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+
+    .space-tile li {
+      margin-bottom: 10px;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .space-tile li:before {
+      content: '✓';
+      color: var(--axiom-green);
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+
+    .more-info-btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background-color: var(--axiom-green);
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      border-radius: 30px;
+      transition: all 0.3s;
+      border: 2px solid var(--axiom-green);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.9em;
+    }
+
+    .more-info-btn:hover {
+      background-color: transparent;
+      color: var(--axiom-green-light);
+      border-color: var(--axiom-green-light);
+    }
+
+    .capacity {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 8px 15px;
+      background-color: rgba(19, 78, 31, 0.2);
+      border-radius: 30px;
+      font-size: 0.9em;
+      color: var(--axiom-green-light);
+      border: 1px solid var(--axiom-green);
+    }
+
+    .tile-image {
+      flex: 1;
+      height: 400px;
+      min-width: 40%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .tile-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.5s ease;
+    }
+
+    .tile-image:hover img {
+      transform: scale(1.05);
+    }
+
+    .tile-image:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(19,78,31,0.2) 0%, transparent 100%);
+    }
+
+    /* Footer Styles */
+    footer {
+      position: relative;
+      background: 
+                  url('depsit.jpg') no-repeat center center/cover;
+      color: white;
+      clip-path: polygon(0 8%, 50% 0, 100% 8%, 100% 100%, 0% 100%);
+      margin-top: 6em;
+      padding-top: 8em;
+      padding-bottom: 4em;
+      text-align: center;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-glass {
+      background: rgba(10, 10, 10, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 3em 2em;
+      max-width: 1000px;
+      margin: auto;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(19, 78, 31, 0.3);
+    }
+
+    .footer-contact {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2em;
+      font-size: 1.2em;
+      font-weight: 400;
+      margin-bottom: 2em;
+    }
+
+    .footer-contact div {
+      flex: 1 1 200px;
+      color: var(--text-light);
+      transition: all 0.3s;
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .footer-contact div:hover {
+      background: rgba(19, 78, 31, 0.2);
+    }
+
+    .footer-contact div i { 
+      margin-right: 10px;
+      color: var(--axiom-green-light);
+    }
+
+    .social-icons {
+      margin: 2em 0;
+    }
+
+    .social-icons a {
+      color: var(--text-light);
+      margin: 0 15px;
+      font-size: 1.5em;
+      transition: all 0.3s;
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      border-radius: 50%;
+      background: rgba(19, 78, 31, 0.3);
+    }
+
+    .social-icons a:hover {
+      color: var(--axiom-green-light);
+      transform: translateY(-5px);
+      background: rgba(19, 78, 31, 0.5);
+    }
+
+    .footer-bottom {
+      font-size: 0.95em;
+      color: #aaa;
+      margin-top: 2em;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      header {
+        height: auto;
+        padding-bottom: 4em;
+      }
+      
+      header h1 {
+        font-size: 2.5em;
+      }
+      
+      header p {
+        font-size: 1.2em;
+      }
+      
+      .nav-bar {
+        position: relative;
+        justify-content: center;
+        padding: 1em;
+        background: rgba(19, 78, 31, 0.9);
+        width: 100%;
+        border-bottom-left-radius: 0;
+      }
+      
+      .space-tile {
+        flex-direction: column;
+      }
+      
+      .tile-image {
+        width: 100%;
+        height: 300px;
+        order: -1;
+      }
+      
+      .tile-content {
+        padding: 30px;
+      }
+      
+      .footer-contact {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .social-icons a {
+        margin: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav-bar">
+    <div class="dropdown">
+      <button>Membership</button>
+      <div class="dropdown-content">
+        <a href="#">Desk Membership</a>
+        <a href="#">Private Office Membership</a>
+      </div>
+    </div>
+    <a href="#spaces">Spaces</a>
+    <a href="#meetings">Meetings & Events</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <img src="logo-light.png" alt="Axiom Logo" />
+  <h1>Work inspired:<br>
+  AGH spaces.</h1>
+  <p>Your partners in<br> Peace,<br> Purpose and Productivity</p>
+</header> 
+
+<section id="about-section">
+  <h2 class="section-title">OverView</h2>
+
+  <div class="about-section">
+    <div class="text-tile">
+      <div class="text-column">
+        <h3>About AGH Sharedspace</h3>
+        <p>A sanctuary for productivity and purpose, our thoughtfully curated spaces offer an inspiring environment to focus, collaborate, and grow, Serving as both a physical and cultural hub.</p>
+      </div>
+      <div class="text-column">
+        <h3>Objective</h3>
+        <p>To creaye and sustain premium, flexible and wholesome workspaces that elevate peaceful productivity, foster Collaboration, and support the growtht of individuals, teams and organisation.</p>
+      </div>
+    </div>
+    <div class="image-tile" style="background-image: url('about-image.jpg');"></div>
+  </div>
+</section>
+
+
+<section id="spaces">
+  <h2 class="section-title">Our Spaces</h2>
+  
+  <div class="section-container">
+    <!-- Hot Desks (Image Right) -->
+    <div class="space-tile image-left">
+      <div class="tile-content">
+        <h2>Hot Desks</h2>
+        <p>Individual or team workstations equipped with </p>
+        <ul>
+          <li>24/7 access</li>
+          <li>Desk sockets</li>
+          <li>Combinaton locker srorage</li>
+          <li>Included utilities</li>
+          <p style="text-align: middle; font-size: 1.5em;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color: #134e1f;">Add-ons</p>
+          <li>Printing</li>
+          <li>Lunch(3×/week)</li>
+          <li>Branded Stationery(Quaterly) </li>
+          <li>Executive Lounge</li>
+          <li>Boardroom access</li>
+        </ul>
+        <a href="#" class="more-info-btn">Book Now</a>
+        <span class="capacity">Capacity: 1 person per desk</span>
+      </div>
+      <div class="tile-image">
+        <img src="hot-desks.jpg" alt="Hot desks">
+      </div>
+    </div>
+    
+    <!-- Boardroom (Image Right) -->
+    <div class="space-tile image-right">
+      <div class="tile-content">
+        <h2>Boardroom</h2>
+        <p>Professional meeting space equipped with premium technology for important presentations and decisions.</p>
+        <ul>    
+          <li>15 seater Boardroom</li>
+          <li>Air Conditioning</li>
+          <li>Logitech audio-visual equipment</li>
+          <li>75inch Screen</li>
+          <li>Digital Whiteboard</li>
+          <li>City-scape view</li>
+        </ul>
+        <a href="#" class="more-info-btn">Reserve</a>
+        <span class="capacity">Capacity: 15 people</span>
+      </div>
+      <div class="tile-image">
+        <img src="sitted.jpg" alt="Boardroom">
+      </div>
+    </div>
+    
+    <!-- Executive Lounge (Image Left) -->
+    <div class="space-tile image-left">
+      <div class="tile-content">
+        <h2>Executive Lounge</h2>
+        <p>Premium workspace with comfortable seating, quiet atmosphere, and concierge service. Ideal for executives needing a professional yet relaxed environment.</p>
+        <ul>
+          <li>Premium seating</li>
+          <li>Quiet zones</li>
+          <li>Concierge service</li>
+          <li>Complimentary refreshments</li>
+        </ul>
+        <span class="capacity">Capacity: </span>
+      </div>
+      <div class="tile-image">
+        <img src="lounge.JPG" alt="Executive lounge">
+      </div>
+    </div>
+    
+    <!-- Kitchenette (Image Right) -->
+    <div class="space-tile image-right">
+      <div class="tile-content">
+        <h2>Kitchenette</h2>
+        <p>Fully equipped kitchen space with premium appliances, dining area, and complimentary coffee/tea service. Perfect for breaks and informal meetings.</p>
+        <ul>
+          <li>Refrigerator & microwave</li>
+          <li>Coffee & tea station</li>
+          <li>Dining area</li>
+          <li>Daily cleaning service</li>
+        </ul>
+        <span class="capacity">Capacity</span>
+      </div>
+      <div class="tile-image">
+        <img src="lunch.jpg" alt="Kitchenette">
+      </div>
+    </div>
+    
+    <!-- Pergola (Image Left) -->
+    <div class="space-tile image-left">
+      <div class="tile-content">
+        <h2>Pergola</h2>
+        <p>Outdoor covered workspace with power outlets and wifi. Enjoy fresh air while you work or host casual meetings in our beautiful garden setting.</p>
+        <ul>
+          <li>Covered outdoor space</li>
+          <li>Power outlets</li>
+          <li>High-speed wifi</li>
+          <li>Garden views</li>
+        </ul>
+        <a href="#" class="more-info-btn">Check Availability</a>
+        <span class="capacity">Capacity: </span>
+      </div>
+      <div class="tile-image">
+        <img src="pergola.jpg" alt="Pergola">
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="footer-glass">
+    <div class="footer-contact">
+      <div><i class="fa fa-envelope"></i> info@axiomgroup.ug</div>
+      <div><i class="fa fa-phone"></i> +256 756 931 816</div>
+      <div><i class="fa fa-map-marker-alt"></i> 78 Luthuli Avenue, Union House, 3rd Floor, Bugolobi</div>
+    </div>
+
+    <div class="social-icons">
+      <a href="https://twitter.com/axiomgroupug" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.linkedin.com/company/axiom-group-uganda" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://wa.me/256200900716" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2025 Axiom Group Uganda. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('navbar').classList.toggle('active');
+  }
+</script>
+
+</body>
+</html>
