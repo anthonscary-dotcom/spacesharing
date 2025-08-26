@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SpaceSharing - Axiom</title>
-  <link rel="icon" href="images/logo-light.png" type="image/png" />
+  <link rel="icon" href="logo-light.png" type="image/png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   
   <style>
@@ -31,7 +31,7 @@
     /* Header Styles */
     header {
       background:  
-                  url("images/spacesharingheader.jpg") no-repeat center/cover;
+                  url("spacesharingheader.jpg") no-repeat center/cover;
       height: 100vh;
       min-height: 600px;
       text-align: center;
@@ -96,6 +96,7 @@
       color: var(--axiom-green);
       background: var(--text-light);
       border-color: var(--text-light);
+
     }
 
     .dropdown {
@@ -225,8 +226,8 @@
 
     /* Why Choose Us Section */
     .why-choose-us {
-      background:  
-                  url('images/aboutusbk.PNG') no-repeat center center/cover;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                  url('aboutusbk.png') no-repeat center center/cover;
       padding: 80px 20px;
       margin: 60px 0;
       text-align: center;
@@ -298,7 +299,7 @@
       }
       
       .text-column:first-child::after {
-        display: none;
+        display: none; 
       }
       
       .benefits-container {
@@ -458,12 +459,199 @@
       height: 100%;
       background: linear-gradient(135deg, rgba(19,78,31,0.2) 0%, transparent 100%);
     }
+   /* Meetings & Events Section */
+.meetings-section {
+    padding: 80px 20px;
+    background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), 
+                url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+    color: #333;
+  }
+
+  .meetings-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .meetings-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .meetings-header h2 {
+    font-size: 2.8em;
+    color: var(--axiom-green);
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+  }
+
+  .meetings-header h2:after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--axiom-green-light);
+  }
+
+  .meetings-header p {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+  }
+
+  .event-card {  
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  }
+
+  .event-image {
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .event-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .event-card:hover .event-image img {
+    transform: scale(1.05);
+  }
+
+  .event-content {
+    padding: 25px;
+  }
+
+  .event-content h3 {
+    color: var(--axiom-green);
+    font-size: 1.5em;
+    margin-bottom: 15px;
+  }
+
+  .event-content p {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .event-features {
+    margin-bottom: 20px;
+  }
+
+  .event-features li {
+    color: #666;
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 25px;
+  }
+
+  .event-features li:before {
+    content: '✓';
+    color: var(--axiom-green);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+  }
+
+  .event-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: var(--axiom-green);
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 30px;
+    transition: all 0.3s;
+    border: 2px solid var(--axiom-green);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9em;
+  }
+
+  .event-btn:hover {
+    background-color: transparent;
+    color: var(--axiom-green);
+  }
+
+  .testimonials {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 40px;
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  .testimonials h3 {
+    color: var(--axiom-green);
+    margin-bottom: 30px;
+    font-size: 1.8em;
+  }
+
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+
+  .testimonial {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  }
+
+  .testimonial p {
+    color: #555;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .testimonial .client {
+    color: var(--axiom-green);
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    .events-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .testimonial-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
 
     /* Footer Styles */
     footer {
       position: relative;
       background: 
-                  url('images/depsit.jpg') no-repeat center center/cover;
+                  url('depsit.jpg') no-repeat center center/cover;
       color: white;
       clip-path: polygon(0 8%, 50% 0, 100% 8%, 100% 100%, 0% 100%);
       margin-top: 6em;
@@ -610,7 +798,7 @@
     <a href="#contact">Contact</a>
   </div>
 
-  <img src="images/logo-light.png" alt="Axiom Logo" />
+  <img src="logo-light.png" alt="Axiom Logo" />
   <h1>Work inspired:<br>
   AGH spaces.</h1>
   <p>Your partners in<br> Peace,<br> Purpose and Productivity</p>
@@ -634,7 +822,7 @@
   </div>
 </section>
 
-<!-- Why Choose Us Section -->
+ 
 <section class="why-choose-us">
   <h2>WHY CHOOSE US?</h2>
   <div class="benefits-container">
@@ -665,7 +853,7 @@
   <h2 class="section-title">Our Spaces</h2>
   
   <div class="section-container">
-    <!-- Hot Desks (Image Right) -->
+    
     <div class="space-tile image-left">
       <div class="tile-content">
         <h2>Hot Desks</h2>
@@ -690,7 +878,7 @@
       </div>
     </div>
     
-    <!-- Boardroom (Image Right) -->
+    
     <div class="space-tile image-right">
       <div class="tile-content">
         <h2>Boardroom</h2>
@@ -707,11 +895,11 @@
         <span class="capacity">Capacity: 15 people</span>
       </div>
       <div class="tile-image">
-        <img src="images/sitted.jpg" alt="Boardroom">
+        <img src="sitted.jpg" alt="Boardroom">
       </div>
     </div>
     
-    <!-- Executive Lounge (Image Left) -->
+    
     <div class="space-tile image-left">
       <div class="tile-content">
         <h2>Executive Lounge</h2>
@@ -725,11 +913,11 @@
         <span class="capacity">Capacity: </span>
       </div>
       <div class="tile-image">
-        <img src="images/lounge.JPG" alt="Executive lounge">
+        <img src="lounge.JPG" alt="Executive lounge">
       </div>
     </div>
     
-    <!-- Kitchenette (Image Right) -->
+    
     <div class="space-tile image-right">
       <div class="tile-content">
         <h2>Kitchenette</h2>
@@ -743,11 +931,11 @@
         <span class="capacity">Capacity</span>
       </div>
       <div class="tile-image">
-        <img src="images/lunch.jpg" alt="Kitchenette">
+        <img src="lunch.jpg" alt="Kitchenette">
       </div>
     </div>
     
-    <!-- Pergola (Image Left) -->
+    
     <div class="space-tile image-left">
       <div class="tile-content">
         <h2>Pergola</h2>
@@ -763,6 +951,70 @@
       </div>
       <div class="tile-image">
         <img src="pergola.jpg" alt="Pergola">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="meetings" class="meetings-section">
+  <div class="meetings-container">
+    <div class="meetings-header">
+      <h2>Meetings & Events</h2>
+      <p>From intimate board meetings to corporate events, our versatile spaces are designed to inspire productivity and creativity. We handle all the details so you can focus on what matters most.</p>
+    </div>
+    
+    <div class="events-grid">
+      <div class="event-card">
+        <div class="event-image">
+          <img src="" alt="Board Meetings">
+        </div>
+        <div class="event-content">
+          <h3>Board Meetings</h3>
+          <p>Impress your executives with our professionally equipped boardrooms featuring state-of-the-art technology and premium amenities.</p>
+          <ul class="event-features">
+            <li>15 person capacity</li>
+            <li>High-tech presentation systems</li>
+            <li>Executive seating</li>
+            <li>Video conferencing capabilities</li>
+            <li>Dedicated support staff</li>
+          </ul>
+          <a href="#" class="event-btn">Check Availability</a>
+        </div>
+      </div>
+      
+      
+      <div class="event-card">
+        <div class="event-image">
+          <img src="" alt="Corporate Events">
+        </div>
+        <div class="event-content">
+          <h3>Corporate Events</h3>
+          <p>Host memorable corporate events, from product launches to networking mixers, in our sophisticated event spaces.</p>
+          <ul class="event-features">
+            
+          </ul>
+          <a href="#" class="event-btn">Reserve</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="testimonials">
+      <h3>What Our Clients Say</h3>
+      <div class="testimonial-grid">
+        <div class="testimonial">
+          <p>""</p>
+          <div class="client">- </div>
+        </div>
+        <div class="testimonial">
+          <p>""</p>
+          <div class="client">- </div>
+        </div>
+        <div class="testimonial">
+          <p>""</p>
+          <div class="client">- </div>
+        </div>
       </div>
     </div>
   </div>
@@ -796,8 +1048,3 @@
 
 </body>
 </html>
-
-
-
-
-
