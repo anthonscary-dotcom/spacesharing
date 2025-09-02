@@ -1182,7 +1182,7 @@
             }
             50% {
                 transform: scale(1.4);
-                opacity: 0.7;
+                opacity: 0.5;
                 filter: blur(2px);
             }
             100% {
@@ -1272,13 +1272,13 @@
                         createDroplets(this, e);
                         
                         // Hide bubble with pop animation
-                        this.style.animation = 'clientPop 0.8s forwards';
+                        this.style.animation = 'clientPop 0.4s forwards';
                         
-                        // Reset bubble after 3 seconds
+                        // Reset bubble after 1.5 seconds
                         setTimeout(() => {
                             this.classList.remove('popping');
                             this.style.animation = 'clientFloat 6s ease-in-out infinite';
-                        }, 3000);
+                        }, 1500);
                     });
                 });
                 
@@ -1359,6 +1359,7 @@
 
 </body>
 </html>
+
 
 
 
