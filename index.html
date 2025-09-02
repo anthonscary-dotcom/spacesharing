@@ -629,6 +629,173 @@
       margin: 0;
       color: #001f3f;
     }
+     .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .clients-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 60px;
+            max-width: 1000px;
+            perspective: 1000px;
+        }
+        
+        .bubble {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 
+                0 10px 20px rgba(0, 0, 0, 0.2),
+                inset 0 -5px 15px rgba(255, 255, 255, 0.2),
+                inset 0 5px 15px rgba(255, 255, 255, 0.1);
+            transition: all 0.5s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            animation: float 6s ease-in-out infinite;
+            padding: 0;
+        }
+        
+        .bubble:nth-child(2) {
+            animation-delay: 1s;
+        }
+        
+        .bubble:nth-child(3) {
+            animation-delay: 2s;
+        }
+        
+        .bubble::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 60%);
+            transform: rotate(30deg);
+        }
+        
+        .bubble:hover:not(.popping) {
+            transform: scale(1.1) translateY(-10px);
+            box-shadow: 
+                0 15px 30px rgba(0, 0, 0, 0.3),
+                inset 0 -5px 20px rgba(255, 255, 255, 0.3),
+                inset 0 5px 20px rgba(255, 255, 255, 0.2);
+        }
+        
+        .bubble:hover:not(.popping)::before {
+            animation: shine 1.5s ease forwards;
+        }
+        
+        .bubble-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .client-logo {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+            color: white;
+            filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+        }
+        
+        .client-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 10px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Water droplet effects */
+        .water-droplet {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 5;
+        }
+        
+        /* Bubble popping effect */
+        .bubble.popping {
+            pointer-events: none;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+        
+        @keyframes shine {
+            0% {
+                transform: translateY(-100%) rotate(30deg);
+            }
+            100% {
+                transform: translateY(100%) rotate(30deg);
+            }
+        }
+        
+        @keyframes pop {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+                filter: blur(0);
+            }
+            50% {
+                transform: scale(1.4);
+                opacity: 0.7;
+                filter: blur(2px);
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+                filter: blur(5px);
+                visibility: hidden;
+            }
+        }
+        
+        @keyframes droplet {
+            0% {
+                transform: translate(0, 0) scale(0);
+                opacity: 1;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(1);
+                opacity: 0;
+            }
+        }
+
 
     /* Footer Styles */
     footer {
@@ -1027,6 +1194,107 @@
       </div>
       
   </section>
+  <h2 class="section-title">Our Valued Clients</h2>
+    
+    <div class="clients-container">
+        <div class="bubble" data-id="1">
+            <div class="bubble-content">
+                <div class="client-logo">
+                    <i class="fab fa-microsoft"></i>
+                </div>
+                <h3 class="client-name">Microsoft</h3>
+            </div>
+        </div>
+        
+        <div class="bubble" data-id="2">
+            <div class="bubble-content">
+                <div class="client-logo">
+                    <i class="fab fa-google"></i>
+                </div>
+                <h3 class="client-name">Google</h3>
+            </div>
+        </div>
+        
+        <div class="bubble" data-id="3">
+            <div class="bubble-content">
+                <div class="client-logo">
+                    <i class="fab fa-apple"></i>
+                </div>
+                <h3 class="client-name">Apple Inc</h3>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const bubbles = document.querySelectorAll('.bubble');
+            
+            // Add event listeners to each bubble
+            bubbles.forEach(bubble => {
+                bubble.addEventListener('mouseenter', function(e) {
+                    if (this.classList.contains('popping')) return;
+                    
+                    // Add popping class to prevent multiple triggers
+                    this.classList.add('popping');
+                    
+                    // Create water droplet effects
+                    createDroplets(this, e);
+                    
+                    // Hide bubble with pop animation
+                    this.style.animation = 'pop 0.8s forwards';
+                    
+                    // Reset bubble after 3 seconds
+                    setTimeout(() => {
+                        this.classList.remove('popping');
+                        this.style.animation = 'float 6s ease-in-out infinite';
+                    }, 3000);
+                });
+            });
+            
+            // Create water droplet effects
+            function createDroplets(bubble, event) {
+                const rect = bubble.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                
+                // Create multiple droplets
+                for (let i = 0; i < 16; i++) {
+                    const droplet = document.createElement('div');
+                    droplet.classList.add('water-droplet');
+                    
+                    // Random size
+                    const size = Math.random() * 12 + 6;
+                    droplet.style.width = `${size}px`;
+                    droplet.style.height = `${size}px`;
+                    
+                    // Calculate random direction and distance
+                    const angle = Math.random() * Math.PI * 2;
+                    const distance = Math.random() * 120 + 60;
+                    const tx = Math.cos(angle) * distance;
+                    const ty = Math.sin(angle) * distance;
+                    
+                    // Set initial position
+                    droplet.style.left = `${centerX - size/2}px`;
+                    droplet.style.top = `${centerY - size/2}px`;
+                    
+                    // Set CSS variables for animation
+                    droplet.style.setProperty('--tx', `${tx}px`);
+                    droplet.style.setProperty('--ty', `${ty}px`);
+                    
+                    // Add to document
+                    document.body.appendChild(droplet);
+                    
+                    // Animate droplet
+                    droplet.style.animation = `droplet ${Math.random() * 0.5 + 0.5}s ease-out forwards`;
+                    
+                    // Remove droplet after animation
+                    setTimeout(() => {
+                        droplet.remove();
+                    }, 1000);
+                }
+            }
+        });
+    </script>
 
 <footer id="contact">
   <div class="footer-glass">
@@ -1056,6 +1324,7 @@
 
 </body>
 </html>
+
 
 
 
