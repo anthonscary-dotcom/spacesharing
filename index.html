@@ -629,13 +629,23 @@
       margin: 0;
       color: #001f3f;
     }
-     .section-title {
+     body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .section-title {
             font-size: 2.5rem;
             margin-bottom: 3rem;
             text-align: center;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            
-        
         }
         
         .clients-container {
@@ -646,15 +656,6 @@
             gap: 60px;
             max-width: 1000px;
             perspective: 1000px;
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
-            color: white;
-            overflow-x: hidden;
-           
         }
         
         .bubble {
@@ -806,8 +807,6 @@
                 opacity: 0;
             }
         }
-
-
     /* Footer Styles */
     footer {
       position: relative;
@@ -1332,6 +1331,7 @@
 
 </body>
 </html>
+
 
 
 
