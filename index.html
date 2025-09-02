@@ -645,7 +645,40 @@
       grid-template-columns: 1fr;
     }
   }
+   
+    section#amenities {
+      padding: 50px 10%;
+      background-color: #f3ede5;
+      text-align: center;
+    }
 
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      justify-items: center;
+    }
+
+    .amenity {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 200px;
+    }
+
+    .amenity img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 15px;
+    }
+
+    .amenity p {
+      font-size: 16px;
+      font-weight: 500;
+      margin: 0;
+      color: #001f3f;
+    }
 
     /* Footer Styles */
     footer {
@@ -1030,6 +1063,51 @@
     </div>
   </div>
 </section>
+<!-- Amenities Section -->
+  <section id="amenities">
+    <div class="amenities-grid">
+      <div class="amenity">
+        <img src="icons/storage.png" alt="Storage">
+        <p>Storage options available</p>
+      </div>
+      <div class="amenity">
+        <img src="icons/secure.png" alt="Secure space">
+        <p>Access your secure space 24/7</p>
+      </div>
+      <div class="amenity">
+        <img src="icons/wifi.png" alt="Wifi">
+        <p>High-speed wifi &amp; back up power</p>
+      </div>
+      <div class="amenity">
+        <img src="icons/cleaning.png" alt="Cleaning">
+        <p>Daily cleaning protocols</p>
+      </div>
+      <div class="amenity">
+        <img src="icons/facilities.png" alt="Office facilities">
+        <p>Access to all Centre office facilities</p>
+      </div>
+      <div class="amenity">
+        <img src="icons/africa.png" alt="Africa Access">
+        <p>Free access to all KOFISI locations in Africa</p>
+      </div>
+      <div class="amenity">
+        <img src="icons/events.png" alt="Events">
+        <p>Member events programme</p>
+      </div>
+      <div class="amenity">
+        <img src="icons/phone.png" alt="Phone booths">
+        <p>Access to phone booths</p>
+      </div>
+      <div class="amenity">
+        <img src="icons/printing.png" alt="Printing">
+        <p>Printing and bureau facilities,</p>
+      </div>
+      <div class="amenity">
+        <img src="icons/hospitality.png" alt="Hospitality">
+        <p>Hospitality services</p>
+      </div>
+    </div>
+  </section>
 
 <footer id="contact">
   <div class="footer-glass">
@@ -1059,6 +1137,7 @@
 
 </body>
 </html>
+
 
 
 
